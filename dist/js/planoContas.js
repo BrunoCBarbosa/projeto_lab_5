@@ -1,3 +1,5 @@
+var planos = []
+
 salvar();
 
 function salvar() {
@@ -10,6 +12,17 @@ function salvar() {
 function addPlanoContas(){
     var inputCategoria = document.getElementById('categoria');
     var inputTipo = document.getElementById('tipo');
+
+    var plano = {
+    	categoria: inputCategoria.value,
+    	tipo: inputTipo.value
+    };
     
-    console.log(inputTipo.value);
+    planos.push(plano)
+    saveLocalStorage()
+}
+
+function saveLocalStorage(){
+	var data = JSON.stringify(planos)
+	localStorage.setItem("Planos", data)
 }

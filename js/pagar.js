@@ -2,22 +2,27 @@ var pagamentos = []
 var planos = []
 
 loadDataFromPlano()
-
+loadDataFromPagamento()
 salvar();
 
 function salvar() {
     var button = document.getElementById('btnSalvar_pag');
     button.onclick = function() {
-        addPagar();
+        var inputNumero = document.getElementById('numero_pag');
+        var inputPlano = document.getElementById('planoContas_pag');
+        var inputDescricao = document.getElementById('descricao_pag');
+        var inputValor = document.getElementById('valor_pag');
+        // var inputSituacao = document.getElementById('situacao_pag').childNodes[1]
+        if (validate(inputNumero) && validate(inputPlano) && validate(inputDescricao) && validate(inputValor)) {
+            addPagar(inputNumero, inputPlano, inputDescricao, inputValor);
+            clearInput(inputNumero, inputDescricao, inputValor)
+        } else {
+            alert('Todos os campos devem ser preenchidos!')
+        }
     };
 }
 
-function addPagar() {
-    var inputNumero = document.getElementById('numero_pag');
-    var inputPlano = document.getElementById('planoContas_pag');
-    var inputDescricao = document.getElementById('descricao_pag');
-    var inputValor = document.getElementById('valor_pag');
-    // var inputSituacao = document.getElementById('situacao_pag').childNodes[1]
+function addPagar(inputNumero, inputPlano, inputDescricao, inputValor) {
 
     var pagamento = {
         numero: inputNumero.value,
@@ -57,4 +62,22 @@ function loadDataFromPlano() {
         planos = JSON.parse(planoSaved)
         populateSelect()
     }
+}
+
+function loadDataFromPagamento() {
+    var pagamentoSaved = localStorage.getItem("Pagamentos")
+    if (pagamentoSaved) {
+        pagamentos = JSON.parse(pagamentoSaved)
+    }
+}
+
+function clearInput(inputNumero, inputDescricao, inputValor) {
+    inputNumero.value = ''
+    inputDescricao.value = ''
+    inputValor.value = ''
+    location.reload()
+}
+
+function validate(field) {
+    return field.value.trim() != ''
 }

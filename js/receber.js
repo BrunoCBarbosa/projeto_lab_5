@@ -1,4 +1,5 @@
 var recebimentos = []
+var planos = []
 
 loadDataFromPlano()
 salvar();
@@ -23,7 +24,7 @@ function addReceber() {
         valor: inputValor.value
     };
 
-    recebimentos.push(pagamento)
+    recebimentos.push(recebimento)
     saveLocalStorage()
 }
 

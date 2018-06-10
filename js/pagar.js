@@ -1,4 +1,5 @@
 var pagamentos = []
+var planos = []
 
 loadDataFromPlano()
 
@@ -16,15 +17,17 @@ function addPagar() {
     var inputPlano = document.getElementById('planoContas_pag');
     var inputDescricao = document.getElementById('descricao_pag');
     var inputValor = document.getElementById('valor_pag');
+    // var inputSituacao = document.getElementById('situacao_pag').childNodes[1]
 
     var pagamento = {
         numero: inputNumero.value,
         plano: inputPlano.value,
         descricao: inputDescricao.value,
-        valor: inputValor.value
+        valor: inputValor.value,
+        // situacao: inputSituacao.value
     };
-
     pagamentos.push(pagamento)
+
     saveLocalStorage()
 
 }
@@ -45,7 +48,7 @@ function populateSelect() {
 
 function saveLocalStorage() {
     var data = JSON.stringify(pagamentos)
-    LocalStorage.setItem("Pagamentos", data)
+    localStorage.setItem("Pagamentos", data)
 }
 
 function loadDataFromPlano() {

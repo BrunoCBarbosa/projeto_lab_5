@@ -16,10 +16,6 @@ function populateTable() {
     tdDespesa.innerHTML = 'R$ ' + despesaVal
     tdSaldo.innerHTML = 'R$ ' + saldo(receitaVal, despesaVal)
 
-    // tr.appendChild(tdReceita)
-    // tr.appendChild(tdDespesa)
-    // tr.appendChild(tdSaldo)
-
 }
 
 function receita() {

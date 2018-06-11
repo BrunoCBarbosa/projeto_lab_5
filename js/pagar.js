@@ -12,7 +12,6 @@ function salvar() {
         var inputPlano = document.getElementById('planoContas_pag');
         var inputDescricao = document.getElementById('descricao_pag');
         var inputValor = document.getElementById('valor_pag');
-        // var inputSituacao = document.getElementById('situacao_pag').childNodes[1]
         if (validate(inputNumero) && validate(inputPlano) && validate(inputDescricao) && validate(inputValor)) {
             addPagar(inputNumero, inputPlano, inputDescricao, inputValor);
             clearInput(inputNumero, inputDescricao, inputValor)

@@ -4,7 +4,7 @@ loadDataFromPagamento()
 populateTable()
 
 function populateTable() {
-    var table = document.getElementById('relatorio_despesas')
+    var table = document.getElementById('lista_despesas')
 
     for (var i = 0; i < pagamentos.length; i++) {
         var pagamento = pagamentos[i]
@@ -15,7 +15,7 @@ function populateTable() {
 
         tdDescricao.innerHTML = pagamento.descricao
         tdPlano.innerHTML = pagamento.plano
-        tdValor.innerHTML = 'R$ ' + pagamento.valor
+        tdValor.innerHTML = pagamento.valor
 
         tr.appendChild(tdDescricao)
         tr.appendChild(tdPlano)
@@ -23,13 +23,15 @@ function populateTable() {
 
         table.tBodies[0].appendChild(tr)
 
+       
     }
 
 }
 
 function loadDataFromPagamento() {
-    var pagamentoSaved = localStorage.getItem("Pagamentos")
+    var pagamentoSaved = localStorage.getItem("Recebimentos")
     if (pagamentoSaved) {
         pagamentos = JSON.parse(pagamentoSaved)
     }
 }
+

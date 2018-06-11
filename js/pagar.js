@@ -42,12 +42,15 @@ function populateSelect() {
 
     for (var i = 0; i < planos.length; i++) {
         var plano = planos[i]
-        var option = document.createElement('option')
+        if(plano.tipo == 'despesa'){
+            var option = document.createElement('option')
 
-        option.value = plano.categoria
-        option.innerHTML = option.value
+            option.value = plano.categoria
+            option.innerHTML = option.value
 
-        select.appendChild(option)
+            select.appendChild(option)
+        }
+    
     }
 }
 
